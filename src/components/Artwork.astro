@@ -1,0 +1,42 @@
+---
+interface Props { variant?: 'hero' | 'insight' | 'creative' | 'operations'; }
+const { variant = 'hero' } = Astro.props;
+// Original wire sculpture: a torus projected into a tilted plane.
+const rings = Array.from({ length: 44 }, (_, i) => {
+  const phi = (i / 44) * Math.PI * 2;
+  const points = Array.from({ length: 97 }, (_, j) => {
+    const theta = (j / 96) * Math.PI * 2;
+    const x = (112 + 45 * Math.cos(theta)) * Math.cos(phi);
+    const y = (112 + 45 * Math.cos(theta)) * Math.sin(phi);
+    const z = 45 * Math.sin(theta);
+    const tiltedY = y * 0.62 - z * 0.78;
+    const projectedX = x * 0.91 - tiltedY * 0.41;
+    const projectedY = x * 0.41 + tiltedY * 0.91;
+    return `${j === 0 ? 'M' : 'L'}${(240 + projectedX).toFixed(2)},${(232 + projectedY).toFixed(2)}`;
+  });
+  return points.join(' ') + 'Z';
+});
+---
+{variant === 'hero' ? (
+  <svg class="sculpture" viewBox="0 0 480 440" fill="none" aria-hidden="true">
+    <ellipse cx="244" cy="370" rx="123" ry="12" fill="currentColor" opacity=".045" />
+    <g stroke="currentColor" stroke-width="1.35" opacity=".88">{rings.map(path => <path d={path} />)}</g>
+    <path d="M73 341c19-9 29-6 33 0m271-187c13-8 20-9 25-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+    <path d="m386 132 3-9m9 16 8-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+  </svg>
+) : (
+  <svg class="card-art" viewBox="0 0 300 170" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+    {variant === 'insight' && <>
+      {Array.from({ length: 10 }, (_, i) => <ellipse cx="150" cy="90" rx={27 + i * 6} ry={27 + i * 2.4} transform={`rotate(-26 150 90)`} />)}
+      <path d="M48 126 251 44M233 42l19 2-12 16" /><circle cx="150" cy="85" r="4" fill="currentColor" />
+    </>}
+    {variant === 'creative' && <>
+      {Array.from({ length: 8 }, (_, i) => <rect x="114" y="46" width="74" height="74" rx="5" transform={`rotate(${i * 11 - 38} 151 83)`} />)}
+      <path d="m59 59 3-11 4 11 11 4-11 3-4 11-3-11-11-3Zm175 48 3-8 3 8 8 3-8 3-3 8-3-8-8-3Z" />
+    </>}
+    {variant === 'operations' && <>
+      {Array.from({ length: 8 }, (_, i) => <path d={`M65 ${57 + i * 6} C98 ${-4 + i * 6}, 120 ${151 + i * 3}, 150 ${86 + i * 2} S206 ${36 + i * 5}, 237 ${83 + i * 6}`} />)}
+      <circle cx="65" cy="77" r="7" fill="var(--surface)" /><circle cx="150" cy="91" r="7" fill="var(--surface)" /><circle cx="237" cy="102" r="7" fill="var(--surface)" />
+    </>}
+  </svg>
+)}

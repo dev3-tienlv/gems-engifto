@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import Artwork from '../components/Artwork.astro';
+import { site, navigation, firstSection } from '../content/site';
+const contactHref = site.contactEmail ? `mailto:${site.contactEmail}` : `#${firstSection}`;
+---
+<Layout>
+  <a class="skip-link" href="#main-content">{site.labels.skip}</a>
+  <div id="top"></div>
+  <header class="site-header container">
+    <a href="#top" class="wordmark" aria-label={site.labels.home}>{site.name.toLowerCase()}<span class="brand-dot">.</span></a>
+    <button class="menu-toggle" aria-label={site.labels.openMenu} aria-expanded="false" aria-controls="main-navigation" hidden><span></span><span></span></button>
+    <nav id="main-navigation" class="main-nav" aria-label={site.labels.navigation}>
+      {navigation.map(item => <a href={`#${item.section}`}>{item.label}</a>)}
+      <a class="button button-small" href={contactHref}>{site.contactEmail ? site.labels.contact : site.labels.discover}<Arrow diagonal /></a>
+    </nav>
+  </header>
+  <main id="main-content">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-mark" aria-hidden="true"></span>{site.hero.eyebrow}</p>
+        <h1 id="hero-title">{site.hero.lines.map((line, i) => <span class:list={{ 'accent-text': i === site.hero.accentLine }}>{line}</span>)}</h1>
+        <p class="hero-description">{site.hero.description}</p>
+        <div class="hero-actions">
+          <a class="button" href={`#${firstSection}`}>{site.hero.primary}<Arrow /></a>
+          {site.sections.approach && <a class="text-link" href="#approach">{site.hero.secondary}<Arrow diagonal /></a>}
+        </div>
+        <div class="hero-note"><span class="status-dot" aria-hidden="true"></span><span>{site.hero.status}</span><span class="note-divider" aria-hidden="true">/</span><span>{site.hero.note}</span></div>
+      </div>
+      <figure class="hero-art">
+        <div class="art-topline"><span>{site.hero.artIndex}</span><span class="art-plus" aria-hidden="true">+</span></div>
+        <Artwork />
+        <div class="art-bottomline"><span>{site.hero.artLabel}</span><span aria-hidden="true">↗</span></div>
+        <figcaption>{site.hero.artCaption}</figcaption>
+      </figure>
+    </section>
+    <div class="focus-strip container" aria-label={site.stripLabel}>{site.strip.map(label => <span><svg class="strip-star" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5" /></svg>{label}</span>)}</div>
+
+    {site.sections.about && <section id="about" class="section about-section container" aria-labelledby="about-title">
+      <div><p class="eyebrow">{site.about.eyebrow}</p><h2 id="about-title" class="multiline">{site.about.title}</h2></div>
+      <div class="about-copy">{site.about.paragraphs.map(text => <p>{text}</p>)}<span class="small-note">{site.about.note}</span></div>
+    </section>}
+
+    {site.sections.focus && <section id="focus" class="section focus-section" aria-labelledby="focus-title">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">{site.focus.eyebrow}</p><h2 id="focus-title" class="multiline">{site.focus.title}</h2></div><p>{site.focus.description}</p></div>
+        <div class="focus-grid">{site.focus.items.map((item, i) => <article class="focus-card">
+          <div class="card-top"><span>0{i + 1}</span><span>{item.category}</span></div>
+          <Artwork variant={item.art} />
+          <h3>{item.title}</h3><p>{item.description}</p><span class="card-label">{site.focus.cardLabel}</span>
+        </article>)}</div>
+      </div>
+    </section>}
+
+    {site.sections.approach && <section id="approach" class="section approach-section container" aria-labelledby="approach-title">
+      <div class="approach-intro"><p class="eyebrow">{site.approach.eyebrow}</p><h2 id="approach-title" class="multiline">{site.approach.title}</h2><p>{site.approach.description}</p><span class="hand-drawn" aria-hidden="true"><svg viewBox="0 0 180 100" fill="none"><path d="M15 30c90-40 150 40 65 46-40 3-38-35 6-32s52 18 76 4m-17-10 20 9-17 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span></div>
+      <ol class="approach-list">{site.approach.items.map((item, i) => <li><span class="step-index">0{i + 1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></li>)}</ol>
+    </section>}
+
+    {site.sections.ai && <section id="ai" class="ai-section container" aria-labelledby="ai-title">
+      <div class="ai-art" aria-hidden="true"><svg viewBox="0 0 280 270" fill="none" stroke="currentColor" stroke-width="1.4">
+        {Array.from({ length: 13 }, (_, i) => <path d={`M${57 + i * 3} 172C${22 + i * 4} ${60 + i * 3} ${182 - i * 3} ${25 + i * 5} ${220 - i * 3} 110S${158 + i * 3} ${255 - i * 4} ${57 + i * 3} 172Z`} />)}
+        <path d="M79 196c10-40 21-47 44-38s39-6 39-28m-11 10 11-13 9 13" /><circle cx="78" cy="197" r="4" fill="currentColor" />
+      </svg></div>
+      <div class="ai-copy"><p class="eyebrow">{site.ai.eyebrow}</p><h2 id="ai-title" class="multiline">{site.ai.title}</h2><p>{site.ai.description}</p><ul class="principle-list">{site.ai.principles.map(text => <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>{text}</li>)}</ul><div class="ai-note"><span>{site.ai.status}</span><p>{site.ai.note}</p></div></div>
+    </section>}
+
+    {site.sections.faq && <section id="faq" class="section faq-section container" aria-labelledby="faq-title">
+      <div><p class="eyebrow">{site.faq.eyebrow}</p><h2 id="faq-title" class="multiline">{site.faq.title}</h2></div>
+      <div class="faq-list">{site.faq.items.map(item => <details><summary>{item.question}<span class="faq-icon" aria-hidden="true"></span></summary><p>{item.answer}</p></details>)}</div>
+    </section>}
+
+    <section id="contact" class="closing-section" aria-labelledby="closing-title"><div class="container"><p class="eyebrow">{site.closing.eyebrow}</p><h2 id="closing-title" class="multiline">{site.closing.title}</h2><p>{site.closing.description}</p><a class="button" href={site.contactEmail ? contactHref : '#top'}>{site.contactEmail ? site.closing.contactCta : site.closing.fallbackCta}<Arrow diagonal /></a></div></section>
+  </main>
+  <footer class="site-footer container"><div class="footer-top"><a class="wordmark" href="#top" aria-label={site.labels.home}>{site.name.toLowerCase()}<span class="brand-dot">.</span></a><p>{site.footer.tagline}</p><a class="text-link" href="#top">{site.labels.backToTop}<Arrow diagonal /></a></div><div class="footer-bottom"><span>© {new Date().getFullYear()} {site.footer.copyright}</span><span>{site.footer.status}</span>{site.contactEmail && <a href={contactHref}>{site.contactEmail}</a>}</div></footer>
+</Layout>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#main-navigation');
+  if (menuButton && nav) {
+    menuButton.hidden = false;
+    nav.classList.add('enhanced');
+    const setOpen = (open: boolean) => {
+      menuButton.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+    };
+    menuButton.addEventListener('click', () => setOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
+    nav.addEventListener('click', event => {
+      if ((event.target as Element).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        menuButton.focus();
+      }
+    });
+    document.addEventListener('click', event => {
+      if (!nav.contains(event.target as Node) && !menuButton.contains(event.target as Node)) setOpen(false);
+    });
+    matchMedia('(min-width: 768px)').addEventListener('change', () => setOpen(false));
+  }
+</script>

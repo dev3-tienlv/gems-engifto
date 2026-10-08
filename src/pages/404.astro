@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import { site } from '../content/site';
+---
+<Layout title={`${site.notFound.pageTitle} — ${site.name}`} noindex={true}>
+  <header class="site-header container"><a class="wordmark" href="/" aria-label={site.labels.home}>{site.name.toLowerCase()}<span class="brand-dot">.</span></a></header>
+  <main class="not-found container"><p class="eyebrow">{site.notFound.eyebrow}</p><h1 class="multiline">{site.notFound.title}</h1><p>{site.notFound.description}</p><a class="button" href="/">{site.notFound.cta}<Arrow /></a></main>
+</Layout>
