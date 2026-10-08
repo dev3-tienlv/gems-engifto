@@ -25,7 +25,7 @@ Check/build chạy lần lượt. Playwright chạy production preview riêng �
 ## Website hiện tại
 
 - Home, Company, Our approach và Contact mô tả mục tiêu, đối tượng, mô hình dự kiến và trải nghiệm đang xây.
-- Our purpose có minh họa SVG gốc màu terracotta, responsive.
+- Our purpose dùng ảnh workspace do người dùng cung cấp, responsive.
 - Collection có 32 sản phẩm, search/category/sort và trạng thái URL.
 - Ảnh hoặc tên sản phẩm dẫn tới detail; không có giá, ATC, số lượng, cart hay checkout trên giao diện.
 - Các route cũ `/cart`, `/checkout`, `/order-confirmation` redirect tạm về `/shop`, ở Astro local và Vercel production.
@@ -40,7 +40,7 @@ Check/build chạy lần lượt. Playwright chạy production preview riêng �
 | Hero, business copy, FAQ, email, indexability | `src/content/site.ts` |
 | Sản phẩm, danh mục, ảnh, mô tả | `src/content/catalog.ts` |
 | Privacy/terms và thông tin thương mại | `src/content/policies.ts` |
-| Minh họa Our purpose | `src/components/PurposeArt.astro` |
+| Ảnh Our purpose | `public/images/purpose-workspace.webp` |
 | Màu và font | `src/styles/global.css` |
 | Layout | `src/styles/store.css` |
 | Domain canonical | `astro.config.mjs` |
@@ -49,7 +49,7 @@ Email giữ trống theo yêu cầu. Không tuyên bố pháp nhân, team, fundi
 
 ## Ảnh
 
-34 ảnh WebP local từ Burst by Shopify, nguồn/license ở `public/images/sources.json` và `/photography`. Ảnh minh họa chưa đối chiếu inventory; không lấy ảnh sản phẩm Goldfish.
+34 ảnh WebP local từ Burst by Shopify, nguồn/license ở `public/images/sources.json` và `/photography`. Ảnh minh họa chưa đối chiếu inventory; không lấy ảnh sản phẩm Goldfish. Ảnh Our purpose (`purpose-workspace.webp`) do người dùng cung cấp, không thuộc nguồn/license Burst.
 
 ```bash
 python3 scripts/crawl-images.py

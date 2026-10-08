@@ -13,7 +13,7 @@ Keep the existing ivory, terracotta, Newsreader / DM Sans identity. Lead with th
 - Shared navigation and footer put company information first. There are no cart or checkout links.
 - Collection and 32 product pages support browsing, search, category filters and name/new-arrival sorting without prices or purchase controls. Images and titles link to details; no duplicate card CTA. Legacy transactional routes redirect temporarily to the collection.
 - Metadata, social image, sitemap and docs reflect the company direction.
-- Our purpose includes an original terracotta SVG illustration.
+- Our purpose includes a user-provided workspace photograph, displayed responsively.
 - No invented team, legal entity, funding, traction, inventory or Claude integration.
 
 ## Verification
