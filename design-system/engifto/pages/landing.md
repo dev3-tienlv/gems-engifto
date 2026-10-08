@@ -9,3 +9,4 @@ User preference: Claude-inspired appearance, keeping Engifto identity.
 - Hero art: original terracotta wire sculpture in SVG, restrained paper grid.
 - One light theme, responsive down to 375px, native FAQ details, visible keyboard focus.
 - Only real data after confirmation. No testimonials, invented metrics, customers, contact email or working-AI claims.
+- Positioning: general e-commerce website operations, following founder direction and the Goldfish Commerce reference. Keep the current Claude-inspired appearance; hide the optional AI section. No POD/concept language in visible copy.

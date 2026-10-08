@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { site, navigation } from '../src/content/site';
 
-test('visitors can explore the concept without broken links or pretend contact details', async ({ page }) => {
+test('visitors can explore the company website without broken links or pretend contact details', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');

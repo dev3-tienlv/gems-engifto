@@ -1,7 +1,7 @@
 # Engifto landing page — 2026-10-08
 
 ## Scope
-A complete English landing page, built before the founder confirms the business direction. It must be easy to turn into a company or product website and deploy to Vercel. At the user's request, the current personalized-commerce/POD positioning is adapted from GemsUnited's public business profile. Copy remains an openly stated early concept; company-specific achievements are not attributed to Engifto. AI use cases are explicitly proposed.
+A complete English company landing page, with editable copy and Vercel static deployment. The founder confirmed general e-commerce website operations via the user's supplied message, citing Goldfish Commerce as a reference. Positioning covers storefront management, product catalogs/content, and day-to-day operations. The earlier POD/concept positioning is superseded. Goldfish's legal details, catalog, prices, testimonials, ratings and shipping policies are not attributed to Engifto. The optional AI section is hidden until an actual use case is confirmed.
 
 ## Design
 UI/UX Pro Max informs an editorial, spacious layout. Claude-inspired warm ivory, charcoal, terracotta, large Newsreader serif headings, DM Sans body copy. Use an original Engifto wordmark and vector illustration; do not copy Claude assets, proprietary fonts, logos, or affiliation claims. Light theme only. Strong focus states, semantic landmarks, reduced-motion support and responsive layouts.

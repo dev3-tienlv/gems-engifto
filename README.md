@@ -1,6 +1,6 @@
 # Engifto
 
-Landing page tiếng Anh, lấy cảm hứng thị giác từ Claude, xây bằng **Astro + TypeScript + CSS**. Web tĩnh, font tự host, không cần backend. Nội dung tạm theo hướng công nghệ cho **personalized commerce / print-on-demand**, tham khảo GemsUnited.
+Landing page tiếng Anh, lấy cảm hứng thị giác từ Claude, xây bằng **Astro + TypeScript + CSS**. Web tĩnh, font tự host, không cần backend. Nội dung theo hướng **xây dựng và vận hành website thương mại điện tử**, được sếp xác nhận qua người dùng, tham khảo mô hình storefront của Goldfish Commerce.
 
 ## Chạy local
 
@@ -30,7 +30,7 @@ Chỉnh **`src/content/site.ts`**:
 | Giới thiệu công ty/sản phẩm | `about` |
 | Sản phẩm, dịch vụ hoặc use case | `focus.items` |
 | Quy trình | `approach` |
-| Kế hoạch ứng dụng AI | `ai` |
+| Phần AI tùy chọn, hiện đang ẩn | `ai`, `sections.ai` |
 | Câu hỏi thường gặp | `faq.items` |
 | Liên hệ thật | `contactEmail` |
 | Bật/tắt từng section | `sections` |
@@ -74,6 +74,8 @@ Playwright dùng Google Chrome local (`channel: 'chrome'`), không cần tác đ
 
 ## Lưu ý nội dung
 
-Đây là bản khung hoàn chỉnh về UI, **chưa phải hồ sơ công ty đã xác thực hay sản phẩm đang chạy**. Nội dung hiện tự nhận là early-stage concept, AI là proposed direction. GemsUnited là nguồn tham khảo ngành; không có tuyên bố Engifto là pháp nhân mới, công ty con hay thương hiệu của GemsUnited. Không dùng số liệu, năm thành lập, địa chỉ, email HR, SLA, ảnh nhân viên hay logo của GemsUnited.
+Website giới thiệu Engifto theo định hướng đã chốt: **e-commerce website operations**, gồm quản lý storefront, catalog/content và vận hành hằng ngày. Nội dung không còn định vị là concept POD. Phần AI được ẩn mặc định vì cách dùng thực tế chưa được xác nhận; chỉ bật lại khi có thông tin phù hợp.
+
+Goldfish Commerce là website tham khảo, không phải nguồn pháp nhân hay thông tin liên hệ của Engifto. Không chuyển danh mục đồ bếp, sản phẩm/giá, ratings, tên LLC, địa chỉ Mỹ, hotline, điều kiện shipping/returns hay testimonials của Goldfish sang Engifto. Email liên hệ và thông tin pháp nhân vẫn cần dữ liệu thật trước khi xuất bản hoặc nộp hồ sơ.
 
 Xem **[checklist Claude Startups](docs/claude-startups.md)** để chuẩn bị website và hồ sơ thật. Không có đăng ký chương trình, tích hợp Claude API hay deploy được thực hiện trong repo này.

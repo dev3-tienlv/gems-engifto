@@ -19,7 +19,7 @@ Trang hiện công bố **$1,000 Claude API credits**, một năm Claude Team ch
 
 ## Nên có trên website — khuyến nghị, không phải tiêu chí bắt buộc được công bố
 
-- Một mô tả cụ thể: sản phẩm giải quyết vấn đề gì, cho ai.
+- Một mô tả cụ thể: hoạt động kinh doanh hoặc sản phẩm giải quyết vấn đề gì, cho ai.
 - Use case thực tế hoặc demo nếu đã có; ghi đúng stage nếu chưa launch.
 - Thông tin nhận diện doanh nghiệp/đội ngũ đủ để đối chiếu, chỉ dùng thông tin đã xác nhận.
 - Liên hệ hoạt động và domain truy cập công khai qua HTTPS.
@@ -28,25 +28,27 @@ Trang hiện công bố **$1,000 Claude API credits**, một năm Claude Team ch
 
 ## Thông tin cần sếp xác nhận
 
-- Engifto là sản phẩm/thương hiệu của pháp nhân nào? Quan hệ với GemsUnited là gì?
+- Engifto thuộc pháp nhân nào? Quan hệ với GemsUnited hoặc Goldfish Commerce là gì, nếu có?
 - Ngày thành lập của công ty nộp hồ sơ; tình trạng và ngày funding nếu có. Domain mới không chứng minh công ty mới thành lập.
-- Tên sản phẩm, khách hàng mục tiêu, tính năng đã có, roadmap dự định làm.
+- Phạm vi website thương mại điện tử đang vận hành, khách hàng/thị trường thực tế và kế hoạch phát triển.
 - Claude sẽ hỗ trợ task nào? Đã tích hợp hay chỉ đang lên kế hoạch?
 - Tên người đăng ký, email domain hoạt động, tài khoản Console và thông tin đội ngũ thật.
 - Traction và funding chỉ ghi khi có dữ liệu thật.
 
 Nếu hồ sơ thuộc GemsUnited, thông tin pháp nhân phải là của GemsUnited; không tạo một công ty mới trên giấy chỉ vì dùng domain Engifto.
 
-## Nguồn nội dung tạm cho landing
+## Định hướng đã được sếp xác nhận
 
-[GemsUnited homepage](https://www.gemsunited.com/) và [About](https://www.gemsunited.com/about-us) mô tả hoạt động B2B POD, creative, fulfillment, growth, tools/data/automation. Từ đó bản Engifto tạm chọn ba hướng: **insights, creative workflows, operations**. Định hướng dùng AI là đề xuất cho khung, **không phải thông tin được xác nhận từ GemsUnited**.
+Sếp yêu cầu giới thiệu chung về **vận hành e-commerce websites**, tham khảo [Goldfish Commerce](https://www.goldfishcommerce.com/). Trang tham khảo là storefront bán đồ bếp, có catalog, checkout, thông tin shipping/returns và liên hệ doanh nghiệp. Engifto dùng cấu trúc hoạt động thương mại điện tử làm nền, với ba phần: **website management, catalog/content, everyday operations**.
 
-Những dữ kiện **không chuyển sang Engifto**: năm thành lập 2025, hơn 20 quốc gia, mục tiêu top 5, SLA dispatch, địa chỉ Đà Nẵng, email HR, danh sách khách hàng hay thành tích. Sếp có thể thay hoàn toàn định hướng trong `src/content/site.ts`.
+Không gán sang Engifto danh mục đồ bếp, số sản phẩm, ratings, testimonials, tên Goldfish Commerce LLC, địa chỉ Mỹ, hotline hay chính sách shipping/returns của trang tham khảo. Website không tuyên bố Engifto sở hữu Goldfish hoặc có quan hệ pháp nhân cụ thể. Nguồn GemsUnited/POD ở bản trước đã được thay thế bởi định hướng e-commerce tổng quát.
+
+Phần AI được ẩn trên landing vì chưa có thông tin xác nhận. Nếu dùng Claude khi đăng ký, mô tả công việc thực tế như viết nội dung sản phẩm, hỗ trợ vận hành hoặc phát triển website chỉ khi đó đúng với hoạt động/kế hoạch của doanh nghiệp. Không cần biến website thành một sản phẩm AI chỉ để nộp chương trình.
 
 ## Trước khi nộp
 
 - [ ] Xác nhận eligibility của pháp nhân và đối chiếu thông tin trên website/hồ sơ.
-- [ ] Hoàn thiện copy sản phẩm thật; giữ stage và kế hoạch AI chính xác.
+- [ ] Đối chiếu mô tả hoạt động e-commerce với doanh nghiệp thật; xác nhận cách dùng Claude nếu hồ sơ có đề cập.
 - [ ] Kích hoạt domain, cấu hình HTTPS và mailbox `@engifto.com`.
 - [ ] Deploy production, truy cập được không cần đăng nhập/Vercel protection.
 - [ ] Chuyển `indexable` khi nội dung đã sẵn sàng; indexing không được trang chương trình nêu là điều kiện bắt buộc.

@@ -24,6 +24,16 @@ Performance: local variable fonts use weight-only files instead of full optical-
 
 ## Limits
 
-Vercel deployment, DNS, HTTPS on the real domain, email mailbox and Claude Console application have not been performed. Engifto's business/legal identity and product remain provisional. The supplied GemsUnited site is a source for industry context, not proof of Engifto's eligibility, corporate affiliation or AI integration. The authenticated application form was not inspected.
+Vercel deployment, DNS, HTTPS on the real domain, email mailbox and Claude Console application have not been performed. The founder has now confirmed e-commerce website operations as the business direction. Legal identity, specific storefront ownership and actual Claude usage remain unverified. Reference sites are not proof of Engifto's eligibility, corporate affiliation or AI integration. The authenticated application form was not inspected.
 
 Browser MCP instances were busy with other profiles; tests and screenshots used independently launched Chrome instances without altering those profiles.
+
+## Founder-direction update — 2026-10-08
+
+- Replaced POD/concept positioning with general e-commerce website operations, following the user's supplied founder message and Goldfish Commerce reference.
+- Updated hero, intro, three operational areas, approach, FAQ, footer, metadata and social PNG. Optional AI section is hidden. No Goldfish legal/contact data, kitchen catalog, ratings or shipping policies are reused.
+- `npm run check`: 12 files, zero errors/warnings/hints.
+- `npm test`: eight tests passed on the updated local site. Responsive widths and keyboard/no-JS navigation still pass.
+- `npm run build`: successful static output, including the updated 1200 × 630 PNG. The first concurrent check/build attempt hit a shared Vite dependency-cache rename conflict; running the build sequentially resolved it without source changes. Run Astro check/build sequentially when caches need optimization.
+- Browser check confirms current metadata, no visible POD/concept text, no visible AI section and no desktop overflow. Updated desktop/mobile screenshots and the social card were inspected.
+- Review: the update is scoped to editable copy, the AI visibility switch, generated social artwork and documentation; existing layout, styling and interactions are preserved.
