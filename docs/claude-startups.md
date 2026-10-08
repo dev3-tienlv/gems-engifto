@@ -24,7 +24,7 @@ Trang hiện công bố **$1,000 Claude API credits**, một năm Claude Team ch
 - Thông tin nhận diện doanh nghiệp/đội ngũ đủ để đối chiếu, chỉ dùng thông tin đã xác nhận.
 - Liên hệ hoạt động và domain truy cập công khai qua HTTPS.
 - Nếu dùng Claude: phân biệt **đang sử dụng** với **dự kiến sử dụng**, nêu task thực tế thay vì khẩu hiệu AI chung chung.
-- Privacy policy nếu sản phẩm bắt đầu thu thập dữ liệu cá nhân; bản landing hiện không có form hoặc analytics.
+- Privacy policy phản ánh dữ liệu thực tế; storefront hiện có form checkout demo xử lý trong browser, không lưu/truyền PII và không có analytics.
 
 ## Thông tin cần sếp xác nhận
 
@@ -37,13 +37,13 @@ Trang hiện công bố **$1,000 Claude API credits**, một năm Claude Team ch
 
 Nếu hồ sơ thuộc GemsUnited, thông tin pháp nhân phải là của GemsUnited; không tạo một công ty mới trên giấy chỉ vì dùng domain Engifto.
 
-## Định hướng đã được sếp xác nhận
+## Định hướng storefront hiện tại
 
-Sếp yêu cầu giới thiệu chung về **vận hành e-commerce websites**, tham khảo [Goldfish Commerce](https://www.goldfishcommerce.com/). Trang tham khảo là storefront bán đồ bếp, có catalog, checkout, thông tin shipping/returns và liên hệ doanh nghiệp. Engifto dùng cấu trúc hoạt động thương mại điện tử làm nền, với ba phần: **website management, catalog/content, everyday operations**.
+Sau khi sếp gửi [Goldfish Commerce](https://www.goldfishcommerce.com/), người dùng yêu cầu xây storefront có shop, giỏ hàng và checkout ở **ngành khác**, giữ style hiện tại. Bản triển khai là collection mẫu về **phụ kiện bàn làm việc, giấy viết và đèn** với 32 sản phẩm.
 
-Không gán sang Engifto danh mục đồ bếp, số sản phẩm, ratings, testimonials, tên Goldfish Commerce LLC, địa chỉ Mỹ, hotline hay chính sách shipping/returns của trang tham khảo. Website không tuyên bố Engifto sở hữu Goldfish hoặc có quan hệ pháp nhân cụ thể. Nguồn GemsUnited/POD ở bản trước đã được thay thế bởi định hướng e-commerce tổng quát.
+Catalog, giá và phí shipping là ví dụ; ảnh minh họa có nguồn/license Burst by Shopify. Checkout hiện là demo: không thu tiền, không gửi email hay tạo đơn thật. Khi nộp hồ sơ, mô tả đúng giai đoạn preview và kế hoạch thực tế; không trình bày như doanh nghiệp đã có inventory, doanh thu hoặc đơn hàng.
 
-Phần AI được ẩn trên landing vì chưa có thông tin xác nhận. Nếu dùng Claude khi đăng ký, mô tả công việc thực tế như viết nội dung sản phẩm, hỗ trợ vận hành hoặc phát triển website chỉ khi đó đúng với hoạt động/kế hoạch của doanh nghiệp. Không cần biến website thành một sản phẩm AI chỉ để nộp chương trình.
+Không dùng pháp nhân, địa chỉ, hotline, ratings hoặc testimonials của Goldfish cho Engifto. Quan hệ pháp nhân với GemsUnited/Goldfish chưa được xác nhận. Website không tuyên bố đã tích hợp Claude; chỉ mô tả cách dùng hiện tại/kế hoạch trong hồ sơ khi đúng với hoạt động thật.
 
 ## Trước khi nộp
 
@@ -55,3 +55,18 @@ Phần AI được ẩn trên landing vì chưa có thông tin xác nhận. Nế
 - [ ] Đăng nhập Claude Console, kiểm tra lại [form chính thức](https://platform.claude.com/offers/startups-application), điền thông tin thật và điều khoản hiện hành.
 
 Form nằm sau đăng nhập và chưa được kiểm tra trường chi tiết trong phiên này. Không tự nộp hồ sơ.
+
+## Cải thiện website sau lần đọc lại nguồn chính thức
+
+Đối chiếu lại FAQ và điều khoản chính thức ngày **08/10/2026**. Điều kiện cốt lõi vẫn là tuổi startup/funding, Console, email công việc trùng domain, mô tả sản phẩm và chính sách hỗ trợ. Điều khoản đánh giá traction, funding và Claude integration/usage theo quyết định của Anthropic. Không có tiêu chí yêu cầu website bắt chước Claude hoặc bắt buộc AI section.
+
+- About nêu rõ thứ đang xây dựng, đối tượng home office/study/creative studio và vấn đề giải quyết. Đây là định vị sản phẩm, không phải tuyên bố doanh thu hay lịch sử công ty.
+- Metadata và structured data chỉ mô tả WebSite; không tạo pháp nhân, ngày thành lập, reviews, availability hoặc tích hợp Claude chưa xác nhận.
+- Robots cho phép đọc các trang công khai; sitemap liệt kê 41 trang nội dung và sản phẩm, bỏ cart/checkout/confirmation. Bản nháp vẫn noindex bằng meta; FAQ không yêu cầu search indexing.
+- Email và pháp nhân giữ trống theo xác nhận của người dùng. Không tạo mailbox giả. Đây vẫn là thông tin cần hoàn thiện thực tế trước khi submit.
+
+Mô tả ngắn có thể dùng sau khi sếp xác nhận đúng hoạt động:
+
+> Engifto is building a focused online collection of paper goods, desk lighting, and workspace accessories for home offices, study spaces, and creative studios. The storefront brings together a searchable catalog, product information, a persistent cart, and a browser-based checkout experience.
+
+Nếu cần phần Claude trong hồ sơ, mô tả chỉ những task đang dùng hoặc kế hoạch được sếp xác nhận (ví dụ catalog editing, nội dung sản phẩm, hỗ trợ phát triển storefront). Không tự ghi đã tích hợp Claude API.

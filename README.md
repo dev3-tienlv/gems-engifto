@@ -1,81 +1,94 @@
 # Engifto
 
-Landing page tiếng Anh, lấy cảm hứng thị giác từ Claude, xây bằng **Astro + TypeScript + CSS**. Web tĩnh, font tự host, không cần backend. Nội dung theo hướng **xây dựng và vận hành website thương mại điện tử**, được sếp xác nhận qua người dùng, tham khảo mô hình storefront của Goldfish Commerce.
+Storefront tiếng Anh cho **phụ kiện bàn làm việc, giấy viết và đèn**, xây bằng Astro + TypeScript + CSS. Giữ nền kem, Newsreader / DM Sans và màu đất nung lấy cảm hứng từ Claude. Thiết kế áp dụng UI/UX Pro Max với override để giữ nhận diện hiện tại.
 
 ## Chạy local
 
-Node.js 24 LTS được đề xuất (`.nvmrc`); tối thiểu 22.12.
+Node 24 LTS được đề xuất (`.nvmrc`); tối thiểu 22.12. Cần Google Chrome cho kiểm tra trình duyệt.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Mở địa chỉ Astro in ra, mặc định `http://localhost:4321`.
+Mở `http://localhost:4321`.
 
 ```bash
+npm run test:unit
 npm run check
-npm run build
-npm run preview
-```
-
-## Khi sếp chốt nội dung
-
-Chỉnh **`src/content/site.ts`**:
-
-| Phần | Nơi chỉnh |
-| --- | --- |
-| Tiêu đề, mô tả Google và social | `seo` |
-| Hero và CTA | `hero` |
-| Giới thiệu công ty/sản phẩm | `about` |
-| Sản phẩm, dịch vụ hoặc use case | `focus.items` |
-| Quy trình | `approach` |
-| Phần AI tùy chọn, hiện đang ẩn | `ai`, `sections.ai` |
-| Câu hỏi thường gặp | `faq.items` |
-| Liên hệ thật | `contactEmail` |
-| Bật/tắt từng section | `sections` |
-
-Navigation tự bỏ section đã tắt. CTA tự dùng email khi `contactEmail` có giá trị; mặc định dùng điều hướng trong trang, không tạo email giả hay form giả. Nếu thay đối tượng sử dụng hoặc sản phẩm, cập nhật cả FAQ và metadata để nội dung nhất quán.
-
-Đổi bảng màu và font tại `src/styles/global.css` (các biến trong `:root`). Đổi domain tại `astro.config.mjs`; canonical và URL social image lấy từ đó. Favicon ở `public/favicon.svg`.
-
-`indexable: false` hiện tạo `noindex, nofollow` và robots chặn crawler cho bản nháp. **Đây không phải bảo vệ truy cập**: ai có URL vẫn xem được; không chứa thông tin bí mật trong bản preview. Khi domain hoạt động và nội dung được xác nhận, chuyển `indexable: true`, build và deploy lại. Vercel Preview có thể vẫn bị Vercel thêm `X-Robots-Tag: noindex`; dùng deployment production cho website chính thức.
-
-Ảnh chia sẻ hiện ở `public/og.png`. Sau khi thay hero, có thể tạo lại ảnh từ chính giao diện (cần Google Chrome cài trên máy):
-
-```bash
-npm run build
-npm run preview
-node scripts/generate-og.mjs
-npm run build
-```
-
-## Deploy Vercel
-
-Theo [hướng dẫn Astro chính thức](https://docs.astro.build/en/guides/deploy/vercel/), web Astro tĩnh không cần adapter Vercel.
-
-1. Đưa repo lên GitHub/GitLab và import vào Vercel.
-2. Framework preset: **Astro**; build: `npm run build`; output: **dist**; Node: **24.x**.
-3. Dùng production branch đang chứa code; nếu đang dùng branch `feature/landing-page`, chọn branch này hoặc tích hợp vào `main` trước.
-4. Deploy để lấy URL `.vercel.app` kiểm tra trước.
-5. Khi domain kích hoạt, thêm `engifto.com` trong Project → Settings → Domains. Cấu hình DNS đúng giá trị Vercel hiển thị; không đoán bản ghi.
-6. Thêm `www.engifto.com` nếu cần và redirect về domain chính. Kiểm tra HTTPS, mobile, liên kết và ảnh social.
-
-Không cần biến môi trường hay database cho bản hiện tại. Domain Vercel **không tự tạo mailbox**; email `@engifto.com` cần dịch vụ email riêng và bản ghi DNS của nhà cung cấp.
-
-## Kiểm tra trình duyệt
-
-```bash
 npm run build
 npm test
 ```
 
-Playwright dùng Google Chrome local (`channel: 'chrome'`), không cần tác động browser profile đang mở. Test kiểm tra menu bằng bàn phím, Escape, FAQ, anchor links, no-JS, trang 404, noindex và overflow ở 375/768/1024/1440px. Không có script lint riêng; `npm run check` kiểm tra TypeScript và Astro.
+Chạy check và build lần lượt. Playwright khởi chạy bản production preview riêng ở port **4322**, không dùng lại dev server 4321.
 
-## Lưu ý nội dung
+## Có trong bản hiện tại
 
-Website giới thiệu Engifto theo định hướng đã chốt: **e-commerce website operations**, gồm quản lý storefront, catalog/content và vận hành hằng ngày. Nội dung không còn định vị là concept POD. Phần AI được ẩn mặc định vì cách dùng thực tế chưa được xác nhận; chỉ bật lại khi có thông tin phù hợp.
+- Home, shop với search/category/sort và URL filters.
+- 32 trang sản phẩm, chọn số lượng, giới hạn 10 mỗi sản phẩm.
+- Giỏ hàng lưu trên trình duyệt, chỉnh số lượng, xóa sản phẩm, đồng bộ nhiều tab.
+- Checkout có validation, shipping standard/express, tính tiền bằng integer cents.
+- Xác nhận đơn **demo**; không thu tiền, gửi email hay tạo đơn thật.
+- Our story, Help & contact, shipping/returns/privacy/terms, credits ảnh và 404.
+- Responsive, keyboard navigation, no-JS browsing, font và ảnh tự host.
 
-Goldfish Commerce là website tham khảo, không phải nguồn pháp nhân hay thông tin liên hệ của Engifto. Không chuyển danh mục đồ bếp, sản phẩm/giá, ratings, tên LLC, địa chỉ Mỹ, hotline, điều kiện shipping/returns hay testimonials của Goldfish sang Engifto. Email liên hệ và thông tin pháp nhân vẫn cần dữ liệu thật trước khi xuất bản hoặc nộp hồ sơ.
+## Thay nội dung nhanh
 
-Xem **[checklist Claude Startups](docs/claude-startups.md)** để chuẩn bị website và hồ sơ thật. Không có đăng ký chương trình, tích hợp Claude API hay deploy được thực hiện trong repo này.
+| Nội dung | File |
+| --- | --- |
+| Hero, SEO, FAQ, email thật, indexability | `src/content/site.ts` |
+| Sản phẩm, giá cents, danh mục, ảnh, mô tả | `src/content/catalog.ts` |
+| Thông tin shipping/returns/privacy/terms | `src/content/policies.ts` |
+| Phí giao hàng demo và giới hạn số lượng | `src/lib/cart.ts` |
+| Bảng màu / font | `src/styles/global.css` |
+| Layout storefront | `src/styles/store.css` |
+| Domain canonical | `astro.config.mjs` |
+
+Giá hiển thị USD. Standard $6.95, miễn phí từ subtotal $100; express $12.95. Đây là giá/phí mẫu, không phải chính sách bán hàng thật.
+
+## Ảnh
+
+34 ảnh đã crawl từ **Burst by Shopify**, đọc metadata nguồn, kiểm tra host CDN và chuyển thành WebP thật. File local ở `public/images/`; nguồn và license của từng ảnh ở `public/images/sources.json` và trang `/photography`. Không hotlink hoặc dùng ảnh sản phẩm từ Goldfish Commerce. Đây là ảnh minh họa cho catalog mẫu, chưa đối chiếu inventory.
+
+Để crawl lại, cần Python + Pillow, curl và mạng:
+
+```bash
+python3 scripts/crawl-images.py
+```
+
+Tạo lại social image từ hero, khi local server 4321 đang chạy:
+
+```bash
+node scripts/generate-og.mjs
+npm run build
+```
+
+Giao diện dùng nhãn **cart**, chữ nhỏ 13–16px, giá sản phẩm 22px và badge số lượng ở góc icon. Nút Add to cart dùng capsule charcoal và icon, hover màu đất nung. Các ghi chú demo/preview đã bỏ khỏi giao diện theo yêu cầu; backend thanh toán và fulfillment vẫn chưa tích hợp.
+
+## Dữ liệu và checkout
+
+`localStorage['engifto:bag:v1']` chỉ chứa product IDs và quantities. `sessionStorage['engifto:demo-order:v1']` chỉ chứa sản phẩm, số lượng, shipping option, mã demo và timestamp. Dữ liệu storage được kiểm tra; giá luôn lấy lại từ catalog. Không lưu hoặc truyền email/địa chỉ đã điền, không có trường thẻ, analytics, API thanh toán hay backend đặt hàng.
+
+Nếu browser chặn lưu giỏ hàng, hiện cảnh báo và giữ tạm trên trang hiện tại; không thể giữ giữa các trang. Nếu không lưu được xác nhận demo, hiện xác nhận ngay tại checkout.
+
+## Deploy Vercel
+
+Astro static không cần adapter hoặc database cho bản demo.
+
+1. Import repo **dev3-tienlv/gems-engifto** vào Vercel; production branch **main**.
+2. Framework **Astro**, build `npm run build`, output **dist**, Node **24.x**.
+3. Deploy lấy URL `.vercel.app` để kiểm tra.
+4. Khi domain kích hoạt, thêm `engifto.com` và cấu hình DNS theo giá trị Vercel cung cấp. Kiểm tra HTTPS.
+5. Thêm `www.engifto.com` nếu cần, redirect về domain chính.
+
+`vercel.json` thiết lập CSP và các security headers. CSP hiện chặn gửi form và third-party scripts; phải điều chỉnh có chủ đích nếu thêm thanh toán/API thật. Kiểm tra header thực tế sau deploy.
+
+`indexable: false` giữ bản nháp ngoài search bằng meta robots; không phải bảo vệ truy cập. `robots.txt` cho phép crawler đọc các trang công khai và chỉ chặn các route cart/checkout/confirmation; `/sitemap.xml` liệt kê 41 trang nội dung và sản phẩm. Chỉ bật sau khi nội dung thật được xác nhận. Vercel Preview có thể thêm noindex; dùng production deployment cho website chính thức. Domain không tự tạo mailbox.
+
+## Trước khi bán hàng hoặc nộp Claude Startups
+
+Thay catalog/ảnh mẫu bằng sản phẩm và quyền sử dụng thật; bổ sung pháp nhân và support contact; chốt giá, tồn kho, thuế và shipping/returns. Tích hợp nền tảng commerce, backend xác minh giá, thanh toán, webhook và fulfillment trước khi bật mua thật. Cập nhật privacy/terms theo hệ thống thực tế.
+
+Xem [Claude Startups](docs/claude-startups.md). Website là phần trình bày hoạt động, không đảm bảo hồ sơ được duyệt. Repo chưa deploy hoặc submit hồ sơ.
+
+Trang About nêu rõ sản phẩm, đối tượng phục vụ và mục tiêu của storefront; WebSite structured data không chứa pháp nhân hay lịch sử chưa xác nhận. Email giữ trống theo yêu cầu; bổ sung mailbox hoạt động ở `site.contactEmail` trước khi nộp Claude Startups.

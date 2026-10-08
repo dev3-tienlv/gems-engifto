@@ -1,0 +1,22 @@
+---
+import StoreLayout from '../../layouts/StoreLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import Icon from '../../components/Icon.astro';
+import Arrow from '../../components/Arrow.astro';
+import { products, categoryName, formatMoney, type Product } from '../../content/catalog';
+export function getStaticPaths() { return products.map(product => ({ params: { slug: product.id }, props: { product } })); }
+interface Props { product: Product; }
+const { product } = Astro.props;
+const related = products.filter(item => item.category === product.category && item.id !== product.id).slice(0, 3);
+---
+<StoreLayout title={`${product.name} — Engifto`} description={product.description}>
+  <div class="container breadcrumbs"><a href="/shop">The collection</a><span aria-hidden="true">/</span><a href={`/shop?category=${product.category}`}>{categoryName(product.category)}</a><span aria-hidden="true">/</span><span>{product.name}</span></div>
+  <section class="product-detail container" data-product-detail><figure><div class="detail-image"><img src={product.image} alt={product.alt} width="1000" height="1000" fetchpriority="high" style={product.position ? `object-position: ${product.position}` : undefined} />{product.badge && <span class="product-badge">{product.badge}</span>}</div></figure><div class="product-info"><p class="eyebrow">{categoryName(product.category)}</p><h1>{product.name}</h1><p class="detail-price">{formatMoney(product.price)}</p><p class="product-description">{product.description}</p><div class="purchase-controls"><label for="quantity">Quantity</label><div class="purchase-row"><div class="quantity-control"><button type="button" data-product-step="-1" aria-label="Decrease quantity"><Icon name="minus" /></button><input type="number" name="quantity" id="quantity" min="1" max="10" step="1" value="1" inputmode="numeric" /><button type="button" data-product-step="1" aria-label="Increase quantity"><Icon name="plus" /></button></div><button class="button" data-add-id={product.id}>Add to cart<Arrow /></button></div></div><p class="purchase-note"><Icon name="package" />Shipping calculated at checkout.</p><div class="product-details"><h2>The little details</h2><ul>{product.details.map(detail => <li>{detail}</li>)}</ul></div></div></section>
+  {related.length > 0 && <section class="store-section container"><div class="section-heading"><div><p class="eyebrow">Good company for your desk</p><h2>A few more <em>thoughtful details.</em></h2></div><a class="text-link" href="/shop">Back to the collection<Arrow diagonal /></a></div><div class="product-grid related-grid">{related.map(item => <ProductCard product={item} />)}</div></section>}
+</StoreLayout>
+<script>
+  const quantity = document.querySelector<HTMLInputElement>('#quantity')!;
+  document.querySelectorAll<HTMLButtonElement>('[data-product-step]').forEach(button => button.addEventListener('click', () => {
+    quantity.value = String(Math.max(1, Math.min(10, (Number(quantity.value) || 1) + Number(button.dataset.productStep))));
+  }));
+</script>

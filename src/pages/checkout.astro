@@ -1,0 +1,24 @@
+---
+import StoreLayout from '../layouts/StoreLayout.astro';
+import OrderSummary from '../components/OrderSummary.astro';
+import Arrow from '../components/Arrow.astro';
+import Icon from '../components/Icon.astro';
+import { states } from '../content/checkout';
+---
+<StoreLayout title="Checkout — Engifto" noindex>
+  <section class="page-heading container"><p class="eyebrow">One last little detail</p><h1>Make it <em>yours.</em></h1><p>Your essentials, all together.</p></section>
+  <section class="container checkout-section">
+    <div class="empty-state" data-checkout-empty><Icon name="bag" /><h2>Your cart is a blank canvas.</h2><p>Choose a few essentials before continuing to checkout.</p><a href="/shop" class="button">Explore the collection<Arrow /></a></div>
+    <div class="commerce-grid checkout-grid" data-checkout-content hidden>
+      <div><a class="text-link checkout-back" href="/cart">← Return to your cart</a><form data-checkout-form novalidate autocomplete="off">
+
+        <fieldset><legend>01 / Contact</legend><div class="field"><label for="email">Email address</label><input id="email" type="email" required maxlength="254" placeholder="you@example.com" /></div></fieldset>
+        <fieldset><legend>02 / Shipping details</legend><div class="field-grid"><div class="field"><label for="first-name">First name</label><input id="first-name" required maxlength="80" placeholder="First name" /></div><div class="field"><label for="last-name">Last name</label><input id="last-name" required maxlength="80" placeholder="Last name" /></div></div><div class="field"><label for="country">Country</label><select id="country"><option>United States</option></select></div><div class="field"><label for="address">Street address</label><input id="address" required maxlength="150" placeholder="Street and house number" /></div><div class="field"><label for="apartment">Apartment, suite, etc. <span>(optional)</span></label><input id="apartment" maxlength="80" /></div><div class="field-grid"><div class="field"><label for="city">City</label><input id="city" required maxlength="100" /></div><div class="field"><label for="state">State</label><select id="state" required><option value="">Select state</option>{states.map(([code, name]) => <option value={code}>{name}</option>)}</select></div><div class="field"><label for="zip">ZIP code</label><input id="zip" required pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" inputmode="numeric" placeholder="78701" /></div></div></fieldset>
+        <fieldset><legend>03 / Shipping method</legend><label class="shipping-option"><input type="radio" name="shipping" value="standard" checked /><span><strong>Standard</strong><small>Free standard shipping from $100</small></span><b data-standard-cost>$6.95</b></label><label class="shipping-option"><input type="radio" name="shipping" value="express" /><span><strong>Express</strong><small>Priority shipping</small></span><b>$12.95</b></label></fieldset>
+        <p class="form-error" role="alert" data-checkout-error hidden></p><div class="checkout-submit"><div class="checkout-final-total"><span>Total <small>(USD)</small></span><strong data-checkout-total></strong></div><button type="submit" class="button full-width">Complete checkout<Arrow /></button><p>By continuing, you agree to our <a href="/policies/terms">terms of use</a> and <a href="/policies/privacy">privacy policy</a>.</p></div>
+      </form></div><OrderSummary />
+    </div>
+    <div class="confirmation-panel" data-inline-confirmation hidden tabindex="-1"><Icon name="check" /><h2>Your selection is ready.</h2><p>Your essentials, all together. Keep exploring the collection.</p><a class="button" href="/shop">Keep exploring<Arrow /></a></div>
+  </section>
+</StoreLayout>
+<script>import { initCheckout } from '../scripts/checkout'; initCheckout();</script>

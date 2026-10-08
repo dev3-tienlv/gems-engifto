@@ -1,0 +1,12 @@
+---
+import StoreLayout from '../../layouts/StoreLayout.astro';
+import Arrow from '../../components/Arrow.astro';
+import { policies } from '../../content/policies';
+export function getStaticPaths() { return Object.entries(policies).map(([slug, policy]) => ({ params: { slug }, props: { policy } })); }
+interface Props { policy: (typeof policies)[keyof typeof policies]; }
+const { policy } = Astro.props;
+---
+<StoreLayout title={`${policy.title} — Engifto`} description={policy.introduction}>
+  <section class="page-heading container"><p class="eyebrow">{policy.eyebrow}</p><h1>{policy.title}</h1><p>{policy.introduction}</p></section>
+  <article class="policy-content container prose"><p class="policy-status">Updated October 8, 2026</p>{policy.sections.map(section => <section><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p>{paragraph}</p>)}</section>)}<a href="/contact" class="text-link">More questions? Visit Help & contact<Arrow diagonal /></a></article>
+</StoreLayout>

@@ -1,0 +1,12 @@
+---
+import StoreLayout from '../layouts/StoreLayout.astro';
+import OrderSummary from '../components/OrderSummary.astro';
+import Icon from '../components/Icon.astro';
+import Arrow from '../components/Arrow.astro';
+---
+<StoreLayout title="Your selection — Engifto" noindex>
+  <section class="container confirmation-section"><div class="empty-state" data-no-order><Icon name="bag" /><h1>No selection yet.</h1><p>Explore the collection and bring your essentials together.</p><a class="button" href="/shop">Explore the collection<Arrow /></a></div>
+    <div class="commerce-grid" data-confirmation hidden><div class="confirmation-copy"><span class="confirmation-icon"><Icon name="check" /></span><p class="eyebrow">A considered collection</p><h1>Your selection<br />is <em>ready.</em></h1><p>Good things, thoughtfully chosen. Here are the essentials you’ve brought together.</p><dl class="confirmation-meta"><div><dt>Reference</dt><dd data-order-reference></dd></div><div><dt>Shipping option</dt><dd data-order-method></dd></div></dl><a href="/shop" class="button">Keep exploring<Arrow /></a></div><OrderSummary heading="Your selection" /></div>
+  </section>
+</StoreLayout>
+<script>import { initConfirmation } from '../scripts/checkout'; initConfirmation();</script>

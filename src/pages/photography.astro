@@ -1,0 +1,8 @@
+---
+import StoreLayout from '../layouts/StoreLayout.astro';
+import sources from '../../public/images/sources.json';
+---
+<StoreLayout title="Photography credits — Engifto" description="Sources and licenses for the representative Burst by Shopify photography used by Engifto.">
+  <section class="page-heading container"><p class="eyebrow">The people behind the pictures</p><h1>A considered<br /><em>point of view.</em></h1><p>Representative photography from Burst by Shopify. Downloaded and served locally for the collection.</p></section>
+  <section class="container photography-section"><p class="photo-license-note">Each image links to its source page and license. Commercial use is permitted under the linked license; no photographer or Shopify endorsement is implied.</p><div class="credits-grid">{sources.map(source => <article><img src={source.file} alt={source.title.replace(/Free|Browse|Stock Photo|High Res|HD Images|Pictures|Picture of|Photo|Images|\u2014/g, '').trim()} width="500" height="350" loading="lazy" /><h2>{source.file.replace('/images/', '').replace('.webp', '').replaceAll('-', ' ')}</h2><a href={source.sourcePage} target="_blank" rel="noopener noreferrer">View source ↗</a><a href={source.license} target="_blank" rel="noopener noreferrer">Image license ↗</a></article>)}</div></section>
+</StoreLayout>

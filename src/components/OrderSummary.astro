@@ -1,0 +1,5 @@
+---
+interface Props { heading?: string; }
+const { heading = 'Your essentials' } = Astro.props;
+---
+<aside class="order-summary" data-order-summary><p class="eyebrow">A considered collection</p><h2>{heading}</h2><div class="summary-products" data-summary-lines></div><dl class="totals"><div><dt>Subtotal</dt><dd data-summary-subtotal></dd></div><div><dt>Shipping estimate</dt><dd data-summary-shipping></dd></div><div class="total-row"><dt>Total</dt><dd data-summary-total></dd></div></dl><p class="summary-note">All prices in USD.</p></aside>

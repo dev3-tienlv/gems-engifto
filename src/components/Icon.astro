@@ -1,0 +1,12 @@
+---
+interface Props { name: 'bag' | 'search' | 'check' | 'plus' | 'minus' | 'close' | 'package' | 'leaf'; }
+const { name } = Astro.props;
+const paths = {
+  bag: 'M6 7h12l2 14H4L6 7Zm3 0V5a3 3 0 0 1 6 0v2',
+  search: 'm21 21-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z',
+  check: 'm5 12 4 4L19 6', plus: 'M12 5v14M5 12h14', minus: 'M5 12h14', close: 'm6 6 12 12M6 18 18 6',
+  package: 'm3 7 9-5 9 5v10l-9 5-9-5V7Zm0 0 9 5 9-5M12 12v10M7.5 4.5l9 5',
+  leaf: 'M20 4c-7-1-14 3-14 9a5 5 0 0 0 8 4c4-3 6-9 6-13ZM4 21 15 10',
+};
+---
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>

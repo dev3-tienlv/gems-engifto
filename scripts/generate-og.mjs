@@ -10,7 +10,7 @@ try {
     const logo = document.querySelector('.wordmark').cloneNode(true);
     const title = document.querySelector('h1').cloneNode(true);
     const label = document.querySelector('.hero .eyebrow').cloneNode(true);
-    const artwork = document.querySelector('.sculpture').cloneNode(true);
+    const artwork = document.querySelector('.hero-photo img').cloneNode(true);
     const main = document.createElement('main');
     main.className = 'social-card';
     const copy = document.createElement('div');
@@ -29,7 +29,8 @@ try {
       .social-copy .eyebrow{font-size:10px;margin-bottom:26px}
       .social-copy h1{font-size:76px;line-height:1.01;letter-spacing:-.04em}
       .social-copy h1 span{display:block}
-      .social-art{background:var(--surface);border:1px solid var(--border);border-radius:8px;transform:rotate(2deg);padding:15px}
+      .social-art{background:var(--surface);border-radius:6px;overflow:hidden;height:480px}
+      .social-art img{width:100%;height:100%;object-fit:cover}
     `;
     document.head.append(style);
   });

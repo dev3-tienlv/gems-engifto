@@ -1,0 +1,20 @@
+---
+import Layout from './Layout.astro';
+import StoreHeader from '../components/StoreHeader.astro';
+import StoreFooter from '../components/StoreFooter.astro';
+import '../styles/store.css';
+import { site } from '../content/site';
+interface Props { title?: string; description?: string; noindex?: boolean; }
+---
+<Layout {...Astro.props}>
+  <a class="skip-link" href="#main-content">{site.labels.skip}</a>
+  <StoreHeader />
+  <main id="main-content"><slot /></main>
+  <StoreFooter />
+  <div class="store-toast" role="status" aria-live="polite" hidden><span data-toast-message></span><a href="/cart">View cart <span aria-hidden="true">↗</span></a></div>
+  <noscript><div class="no-js-note">Browsing works without JavaScript. Please enable it to use filters, your cart, and checkout.</div></noscript>
+</Layout>
+<script>
+  import { initStore } from '../scripts/store';
+  initStore();
+</script>
