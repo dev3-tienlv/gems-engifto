@@ -12,8 +12,6 @@ export function initShop() {
     const visible = cards.filter(card => (category === 'all' || card.dataset.category === category) && card.dataset.name!.includes(query));
     const sortType = sort.value;
     const ordered = [...cards].sort((a, b) => {
-      if (sortType === 'price-asc') return Number(a.dataset.price) - Number(b.dataset.price);
-      if (sortType === 'price-desc') return Number(b.dataset.price) - Number(a.dataset.price);
       if (sortType === 'name') return a.dataset.name!.localeCompare(b.dataset.name!);
       if (sortType === 'newest') return Number(products.find(p => p.name.toLowerCase() === b.dataset.name)?.badge === 'New') - Number(products.find(p => p.name.toLowerCase() === a.dataset.name)?.badge === 'New');
       return cards.indexOf(a) - cards.indexOf(b);

@@ -312,3 +312,12 @@ input,select,textarea { font-size:16px; }
  .approach-delivery { padding-top:55px; }
  .company-hero .photo-index { font-size:11px; max-width:calc(100% - 40px); }
 }
+.purpose-visual { align-self:center; }
+.purpose-visual .eyebrow { margin-bottom:12px; }
+.purpose-art { display:block; width:100%; max-width:360px; height:auto; color:var(--accent); }
+.product-info>.text-link { margin-top:20px; }
+@media(max-width:767px) {
+ .purpose-visual { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+ .purpose-visual .eyebrow { margin:0; }
+ .purpose-art { width:52%; max-width:190px; }
+}

@@ -80,3 +80,11 @@ Không có tiêu chí công khai bắt buộc dùng website doanh nghiệp thay 
 Mô tả mới có thể dùng sau khi xác nhận:
 
 > Engifto is developing a direct-to-consumer workspace commerce business for people who work, study, and create in personal spaces. We are building a focused collection of paper goods, desk lighting, and workspace accessories alongside a simpler digital discovery experience. The collection experience is available to explore; commercial operations and fulfillment are still being developed.
+
+## Trạng thái mới nhất: Collection chỉ để xem — 08/10/2026
+
+Phần mô tả storefront/checkout ở các mục trước ghi lại giai đoạn cũ. Website hiện tại chỉ giới thiệu doanh nghiệp và Collection: không có giá, Add to cart, quantity hay mua hàng. Các route transactional cũ redirect về Collection. Không đọc/lưu selections hoặc thông tin checkout. Privacy và terms đã cập nhật theo hành vi này.
+
+Mô tả hiện tại dùng sau khi sếp xác nhận:
+
+> Engifto is developing a workspace commerce business for people who work, study, and create in personal spaces. We are building a focused collection of paper goods, desk lighting, and workspace accessories alongside a simpler digital discovery experience. The website currently presents company information and a browsable collection; purchasing and commercial operations are not available through it.

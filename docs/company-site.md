@@ -10,14 +10,15 @@ Keep the existing ivory, terracotta, Newsreader / DM Sans identity. Lead with th
 - Company explains purpose, audience and intended direct-to-consumer model.
 - Our approach explains the opportunity, product discovery and foundations still being developed.
 - Contact provides company context and only shows an email when configured.
-- Shared navigation and footer put company information first. Cart/search appear in the header only on commerce routes.
-- Collection, 32 product pages, cart and browser checkout retain their behavior.
+- Shared navigation and footer put company information first. There are no cart or checkout links.
+- Collection and 32 product pages support browsing, search, category filters and name/new-arrival sorting without prices or purchase controls. Images and titles link to details; no duplicate card CTA. Legacy transactional routes redirect temporarily to the collection.
 - Metadata, social image, sitemap and docs reflect the company direction.
+- Our purpose includes an original terracotta SVG illustration.
 - No invented team, legal entity, funding, traction, inventory or Claude integration.
 
 ## Verification
 
-Astro check/build, cart unit tests and Playwright verify navigation, responsive layouts, corporate content, local photographs, crawler routes and the existing checkout flow under the production CSP. Visually inspect desktop and mobile.
+Astro check/build, cart unit tests and Playwright verify navigation, responsive layouts, corporate content, local photographs, crawler routes and collection-only behavior under the production CSP. Visually inspect desktop and mobile.
 
 ## Before submitting
 

@@ -1,16 +1,14 @@
 ---
 import type { Product } from '../content/catalog';
-import { formatMoney, categoryName } from '../content/catalog';
-import Icon from './Icon.astro';
+import { categoryName } from '../content/catalog';
 interface Props { product: Product; }
 const { product } = Astro.props;
 ---
-<article class="product-card" data-product-card data-category={product.category} data-price={product.price} data-name={product.name.toLowerCase()}>
+<article class="product-card" data-product-card data-category={product.category} data-name={product.name.toLowerCase()}>
   <a class="product-card-image" href={`/products/${product.id}`} aria-label={`View ${product.name}`}>
     <img src={product.image} alt={product.alt} width="1000" height="1000" loading="lazy" decoding="async" style={product.position ? `object-position: ${product.position}` : undefined} />
     {product.badge && <span class="product-badge">{product.badge}</span>}
   </a>
   <div class="product-card-meta"><span>{categoryName(product.category)}</span></div>
   <h3><a href={`/products/${product.id}`}>{product.name}</a></h3>
-  <div class="product-card-purchase"><span class="product-card-price">{formatMoney(product.price)}</span><button class="add-card" data-add-id={product.id} aria-label={`Add ${product.name} to cart`}><Icon name="bag" /><span>Add to cart</span></button></div>
 </article>
