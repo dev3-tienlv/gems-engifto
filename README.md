@@ -1,6 +1,6 @@
 # Engifto
 
-Storefront tiếng Anh cho **phụ kiện bàn làm việc, giấy viết và đèn**, xây bằng Astro + TypeScript + CSS. Giữ nền kem, Newsreader / DM Sans và màu đất nung lấy cảm hứng từ Claude. Thiết kế áp dụng UI/UX Pro Max với override để giữ nhận diện hiện tại.
+Website doanh nghiệp tiếng Anh cho **Engifto — workspace commerce**, kèm collection phụ kiện bàn làm việc, giấy viết và đèn, xây bằng Astro + TypeScript + CSS. Giữ nền kem, Newsreader / DM Sans và màu đất nung lấy cảm hứng từ Claude. Thiết kế áp dụng UI/UX Pro Max với override để giữ nhận diện hiện tại.
 
 ## Chạy local
 
@@ -24,12 +24,13 @@ Chạy check và build lần lượt. Playwright khởi chạy bản production 
 
 ## Có trong bản hiện tại
 
-- Home, shop với search/category/sort và URL filters.
+- Home giới thiệu mục tiêu, đối tượng, mô hình kinh doanh dự kiến và trải nghiệm đang xây.
+- Company, Our approach và Contact; shop là Collection phụ trợ với search/category/sort và URL filters.
 - 32 trang sản phẩm, chọn số lượng, giới hạn 10 mỗi sản phẩm.
 - Giỏ hàng lưu trên trình duyệt, chỉnh số lượng, xóa sản phẩm, đồng bộ nhiều tab.
 - Checkout có validation, shipping standard/express, tính tiền bằng integer cents.
 - Xác nhận đơn **demo**; không thu tiền, gửi email hay tạo đơn thật.
-- Our story, Help & contact, shipping/returns/privacy/terms, credits ảnh và 404.
+- Shipping/returns/privacy/terms, credits ảnh và 404.
 - Responsive, keyboard navigation, no-JS browsing, font và ảnh tự host.
 
 ## Thay nội dung nhanh
@@ -41,7 +42,7 @@ Chạy check và build lần lượt. Playwright khởi chạy bản production 
 | Thông tin shipping/returns/privacy/terms | `src/content/policies.ts` |
 | Phí giao hàng demo và giới hạn số lượng | `src/lib/cart.ts` |
 | Bảng màu / font | `src/styles/global.css` |
-| Layout storefront | `src/styles/store.css` |
+| Layout company / storefront | `src/styles/store.css` |
 | Domain canonical | `astro.config.mjs` |
 
 Giá hiển thị USD. Standard $6.95, miễn phí từ subtotal $100; express $12.95. Đây là giá/phí mẫu, không phải chính sách bán hàng thật.
@@ -83,12 +84,14 @@ Astro static không cần adapter hoặc database cho bản demo.
 
 `vercel.json` thiết lập CSP và các security headers. CSP hiện chặn gửi form và third-party scripts; phải điều chỉnh có chủ đích nếu thêm thanh toán/API thật. Kiểm tra header thực tế sau deploy.
 
-`indexable: false` giữ bản nháp ngoài search bằng meta robots; không phải bảo vệ truy cập. `robots.txt` cho phép crawler đọc các trang công khai và chỉ chặn các route cart/checkout/confirmation; `/sitemap.xml` liệt kê 41 trang nội dung và sản phẩm. Chỉ bật sau khi nội dung thật được xác nhận. Vercel Preview có thể thêm noindex; dùng production deployment cho website chính thức. Domain không tự tạo mailbox.
+`indexable: false` giữ bản nháp ngoài search bằng meta robots; không phải bảo vệ truy cập. `robots.txt` cho phép crawler đọc các trang công khai và chỉ chặn các route cart/checkout/confirmation; `/sitemap.xml` liệt kê 42 trang nội dung và sản phẩm. Chỉ bật sau khi nội dung thật được xác nhận. Vercel Preview có thể thêm noindex; dùng production deployment cho website chính thức. Domain không tự tạo mailbox.
 
 ## Trước khi bán hàng hoặc nộp Claude Startups
 
 Thay catalog/ảnh mẫu bằng sản phẩm và quyền sử dụng thật; bổ sung pháp nhân và support contact; chốt giá, tồn kho, thuế và shipping/returns. Tích hợp nền tảng commerce, backend xác minh giá, thanh toán, webhook và fulfillment trước khi bật mua thật. Cập nhật privacy/terms theo hệ thống thực tế.
 
-Xem [Claude Startups](docs/claude-startups.md). Website là phần trình bày hoạt động, không đảm bảo hồ sơ được duyệt. Repo chưa deploy hoặc submit hồ sơ.
+Xem [Claude Startups](docs/claude-startups.md). Website là phần trình bày hoạt động, không đảm bảo hồ sơ được duyệt. Việc submit hồ sơ không nằm trong chức năng website.
 
-Trang About nêu rõ sản phẩm, đối tượng phục vụ và mục tiêu của storefront; WebSite structured data không chứa pháp nhân hay lịch sử chưa xác nhận. Email giữ trống theo yêu cầu; bổ sung mailbox hoạt động ở `site.contactEmail` trước khi nộp Claude Startups.
+Các trang doanh nghiệp nêu rõ mục tiêu, sản phẩm, đối tượng phục vụ và mô hình dự kiến; WebSite structured data không chứa pháp nhân hay lịch sử chưa xác nhận. Email giữ trống theo yêu cầu; bổ sung mailbox hoạt động ở `site.contactEmail` trước khi nộp Claude Startups.
+
+Trang doanh nghiệp không có cart/search trên header hoặc nút Add to cart trong nội dung. Các route shop/product/cart/checkout/confirmation giữ công cụ commerce và flow cũ. Nội dung mới không tuyên bố đã bán hàng, có doanh thu, funding hay tích hợp Claude. Xem [định hướng website](docs/company-site.md).

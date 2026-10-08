@@ -62,7 +62,7 @@ Form nằm sau đăng nhập và chưa được kiểm tra trường chi tiết 
 
 - About nêu rõ thứ đang xây dựng, đối tượng home office/study/creative studio và vấn đề giải quyết. Đây là định vị sản phẩm, không phải tuyên bố doanh thu hay lịch sử công ty.
 - Metadata và structured data chỉ mô tả WebSite; không tạo pháp nhân, ngày thành lập, reviews, availability hoặc tích hợp Claude chưa xác nhận.
-- Robots cho phép đọc các trang công khai; sitemap liệt kê 41 trang nội dung và sản phẩm, bỏ cart/checkout/confirmation. Bản nháp vẫn noindex bằng meta; FAQ không yêu cầu search indexing.
+- Robots cho phép đọc các trang công khai; sitemap liệt kê 42 trang nội dung và sản phẩm, bỏ cart/checkout/confirmation. Bản nháp vẫn noindex bằng meta; FAQ không yêu cầu search indexing.
 - Email và pháp nhân giữ trống theo xác nhận của người dùng. Không tạo mailbox giả. Đây vẫn là thông tin cần hoàn thiện thực tế trước khi submit.
 
 Mô tả ngắn có thể dùng sau khi sếp xác nhận đúng hoạt động:
@@ -70,3 +70,13 @@ Mô tả ngắn có thể dùng sau khi sếp xác nhận đúng hoạt động:
 > Engifto is building a focused online collection of paper goods, desk lighting, and workspace accessories for home offices, study spaces, and creative studios. The storefront brings together a searchable catalog, product information, a persistent cart, and a browser-based checkout experience.
 
 Nếu cần phần Claude trong hồ sơ, mô tả chỉ những task đang dùng hoặc kế hoạch được sếp xác nhận (ví dụ catalog editing, nội dung sản phẩm, hỗ trợ phát triển storefront). Không tự ghi đã tích hợp Claude API.
+
+## Chuyển trọng tâm sang website doanh nghiệp — 08/10/2026
+
+Trang chủ hiện giới thiệu mục tiêu, đối tượng phục vụ, mô hình direct-to-consumer dự kiến và cách phát triển trải nghiệm. Company và Our approach bổ sung bối cảnh; Contact tập trung thông tin doanh nghiệp. Collection vẫn truy cập được, với 32 sản phẩm và flow checkout trong browser.
+
+Không có tiêu chí công khai bắt buộc dùng website doanh nghiệp thay cho shop. Thay đổi giúp người xét hồ sơ hiểu thứ đang xây, không thay thế eligibility, email domain hoặc thông tin pháp nhân thật. Hướng workspace commerce vẫn cần sếp xác nhận phù hợp doanh nghiệp nộp hồ sơ.
+
+Mô tả mới có thể dùng sau khi xác nhận:
+
+> Engifto is developing a direct-to-consumer workspace commerce business for people who work, study, and create in personal spaces. We are building a focused collection of paper goods, desk lighting, and workspace accessories alongside a simpler digital discovery experience. The collection experience is available to explore; commercial operations and fulfillment are still being developed.

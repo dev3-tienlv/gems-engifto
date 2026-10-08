@@ -30,7 +30,7 @@ export const policies = {
       { heading: 'The collection', paragraphs: ['Engifto presents paper goods, desk lighting, and workspace accents. Product pages include a description, price in US dollars, and details for each item. The collection and its information may change.'] },
       { heading: 'Your selections', paragraphs: ['The cart keeps product IDs and quantities in this browser. Checkout creates a selection summary in the current browser-tab session. Clearing site data or closing the session may remove these records.'] },
       { heading: 'Photography', paragraphs: ['Stock photographs are sourced from Burst by Shopify under the licenses linked in our photography credits. Photos can include styling accessories. No affiliation or endorsement by Shopify or the photographers is implied.'] },
-      { heading: 'Information and privacy', paragraphs: ['Please review the shipping, returns, and privacy pages for details relevant to the website. Help & contact brings these resources together.'] },
+      { heading: 'Information and privacy', paragraphs: ['Please review the shipping, returns, and privacy pages for details relevant to the website. Contact & company information brings these resources together.'] },
     ],
   },
 };

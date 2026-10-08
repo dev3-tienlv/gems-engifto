@@ -1,12 +1,11 @@
 ---
 import { site } from '../content/site';
-import { categories } from '../content/catalog';
 ---
 <footer class="store-footer container">
-  <div class="store-footer-grid"><div><a href="/" class="wordmark" aria-label={site.labels.home}>engifto<span class="brand-dot">.</span></a><p>Small details for a calmer,<br />more considered workday.</p></div>
-    <div><h2>Explore</h2><a href="/shop">All essentials</a>{categories.map(category => <a href={`/shop?category=${category.id}`}>{category.name}</a>)}</div>
-    <div><h2>A little more</h2><a href="/about">Our story</a><a href="/contact">Help & contact</a><a href="/photography">Photography credits</a><a href="/cart">Your cart</a></div>
-    <div><h2>The details</h2><a href="/policies/shipping">Shipping information</a><a href="/policies/returns">Returns information</a><a href="/policies/privacy">Privacy policy</a><a href="/policies/terms">Terms of use</a></div>
+  <div class="store-footer-grid"><div><a href="/" class="wordmark" aria-label={site.labels.home}>engifto<span class="brand-dot">.</span></a><p>A workspace commerce business,<br />built around a better everyday.</p></div>
+    <div><h2>Company</h2><a href="/about">About Engifto</a><a href="/approach">Our approach</a><a href="/contact">Contact & information</a></div>
+    <div><h2>Collection</h2><a href="/shop">Explore the collection</a><a href="/cart">Your cart</a><a href="/photography">Photography credits</a></div>
+    <div><h2>Information</h2><a href="/policies/privacy">Privacy policy</a><a href="/policies/terms">Terms of use</a><a href="/policies/shipping">Shipping information</a><a href="/policies/returns">Returns information</a></div>
   </div>
-  <div class="footer-bottom"><span>© {new Date().getFullYear()} {site.name}</span><span>Thoughtful essentials. Better workdays.</span>{site.contactEmail && <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>}</div>
+  <div class="footer-bottom"><span>© {new Date().getFullYear()} {site.name}</span><span>Better spaces. Thoughtfully built.</span>{site.contactEmail && <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>}</div>
 </footer>

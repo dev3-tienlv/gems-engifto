@@ -120,7 +120,7 @@ for (const width of [375, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
     await page.evaluate(lines => localStorage.setItem('engifto:bag:v1', JSON.stringify(lines)), seed);
-    for (const path of ['/', '/shop', '/products/everyday-notebook', '/cart', '/checkout', '/about', '/contact']) {
+    for (const path of ['/', '/shop', '/products/everyday-notebook', '/cart', '/checkout', '/about', '/approach', '/contact']) {
       await page.goto(path);
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth), path).toBeLessThanOrEqual(width);
@@ -140,7 +140,7 @@ test('mobile menu supports keyboard and Escape with reduced motion', async ({ pa
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
   await expect(menu).toBeFocused();
   await menu.click();
-  await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Shop the collection' }).click();
+  await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Collection' }).click();
   await expect(page).toHaveURL(/shop/);
 });
 
@@ -150,7 +150,7 @@ test('browsing and FAQ remain accessible without JavaScript', async ({ browser, 
   await page.goto(baseURL!);
   await page.getByText(site.faq.items[0].question, { exact: true }).click();
   await expect(page.locator('#faq details').first()).toHaveAttribute('open', '');
-  await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Shop the collection' }).click();
+  await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Collection' }).click();
   await expect(page.locator('[data-product-card]')).toHaveCount(32);
   await expect(page.locator('.no-js-note')).toBeVisible();
   await context.close();
@@ -215,7 +215,7 @@ test('all product pages have local decodable photos and no prototype labels', as
     await photo.scrollIntoViewIfNeeded();
     await expect.poll(() => photo.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBeTruthy();
   }
-  for (const path of ['/', '/cart', '/checkout', '/order-confirmation', '/about', '/contact', '/photography', '/policies/shipping', '/policies/returns', '/policies/privacy', '/policies/terms']) {
+  for (const path of ['/', '/cart', '/checkout', '/order-confirmation', '/about', '/approach', '/contact', '/photography', '/policies/shipping', '/policies/returns', '/policies/privacy', '/policies/terms']) {
     await page.goto(path);
     expect(await page.locator('body').innerText(), path).not.toMatch(/\bdemo\b|\bpreview\b|\bbag\b/i);
   }
@@ -224,7 +224,7 @@ test('all product pages have local decodable photos and no prototype labels', as
 test('business context, metadata and crawler routes describe the storefront accurately', async ({ page, request }) => {
   await page.goto('/about');
   await expect(page.getByText(site.business.description, { exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: /A focused collection/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /A focused business/ })).toBeVisible();
   await expect(page.locator('a[href^="mailto:"]')).toHaveCount(site.contactEmail ? 2 : 0);
   const schema = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
   expect(schema).toMatchObject({ '@type': 'WebSite', name: 'Engifto', url: 'https://engifto.com/', inLanguage: 'en' });
@@ -239,7 +239,28 @@ test('business context, metadata and crawler routes describe the storefront accu
     return { errors: document.querySelectorAll('parsererror').length, urls: [...document.querySelectorAll('loc')].map(node => node.textContent) };
   }, sitemap);
   expect(parsed.errors).toBe(0);
-  expect(parsed.urls).toHaveLength(41);
+  expect(parsed.urls).toHaveLength(42);
   expect(parsed.urls).toContain('https://engifto.com/about/');
   expect(parsed.urls).not.toContain('https://engifto.com/checkout/');
+});
+
+
+test('company pages lead with business context and keep commerce secondary', async ({ page, request }) => {
+  await page.goto('/');
+  await expect(page.locator('.hero-actions .button')).toHaveAttribute('href', '/about');
+  await expect(page.locator('main [data-add-id]')).toHaveCount(0);
+  await expect(page.locator('header [data-cart-link]')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Workspace commerce.' })).toBeVisible();
+  await page.getByRole('navigation').getByRole('link', { name: 'Our approach', exact: true }).click();
+  await expect(page).toHaveURL(/approach/);
+  await expect(page.getByRole('heading', { name: 'Focus the collection.' })).toBeVisible();
+  await expect(page.getByRole('navigation').getByRole('link', { name: 'Our approach', exact: true })).toHaveAttribute('aria-current', 'page');
+  await page.getByRole('navigation').getByRole('link', { name: 'Collection', exact: true }).click();
+  await expect(page.locator('header [data-cart-link]')).toHaveCount(1);
+  for (const path of ['/about/', '/approach/', '/contact/']) {
+    const response = await request.get(path);
+    expect(response.ok(), path).toBeTruthy();
+    const html = await response.text();
+    expect(html).not.toContain('powered by Claude');
+  }
 });

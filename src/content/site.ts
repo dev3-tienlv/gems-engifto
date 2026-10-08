@@ -1,16 +1,16 @@
-/** Editable storefront copy. Catalog/prices/photos are sample inventory. */
+/** Editable company copy. Only publish verified business and contact information. */
 export const site = {
   name: 'Engifto',
   language: 'en',
   indexable: false,
   contactEmail: null as string | null,
   seo: {
-    title: 'Engifto — Thoughtful essentials for your workspace',
-    description: 'Engifto brings paper goods, desk lighting, and workspace accessories into one considered collection for home offices, study spaces, and creative studios.',
+    title: 'Engifto — Building better everyday workspaces',
+    description: 'Engifto is building a workspace commerce business that brings thoughtful everyday products and a simpler discovery experience together. Learn about our purpose, audience, and approach.',
     image: '/og.png',
   },
   labels: { home: 'Engifto home', openMenu: 'Open navigation', navigation: 'Main', skip: 'Skip to content', backToTop: 'Back to top' },
-  announcement: 'Small details for better workdays.',
+  announcement: 'Thoughtful products. A more considered everyday.',
   business: {
     description: 'Engifto is building a focused online collection of paper goods, desk lighting, and workspace accessories for people who work, study, and create at home.',
     audience: 'Home offices, study spaces, and creative studios.',
@@ -18,18 +18,23 @@ export const site = {
     building: 'A straightforward shopping experience with a searchable collection, clear product information, and a cart that keeps your choices together.',
   },
   hero: {
-    eyebrow: 'Small details. Better workdays.',
-    lines: ['Make room', 'for good', 'work.'],
-    description: 'Thoughtful desk essentials for the notes you take, the ideas you keep, and the space you make your own.',
-    primary: 'Explore the collection', secondary: 'Our story',
+    eyebrow: 'The company behind the collection',
+    lines: ['Better spaces.', 'Thoughtfully', 'built.'],
+    description: 'We’re building Engifto to connect useful workspace products with a simpler way to discover them. A focused commerce business for the places where people work, study, and create.',
+    primary: 'Meet Engifto', secondary: 'Our approach',
     image: '/images/hero.webp', alt: 'A calm home workspace with a white desk, greenery, and natural light',
     caption: 'A little less clutter. A little more possibility.',
   },
+  approach: [
+    { number: '01', title: 'Focus the collection.', description: 'Start with a clear use case: the personal workspace. Bring paper goods, lighting, and desk accents together around everyday routines.' },
+    { number: '02', title: 'Make discovery simpler.', description: 'Give people useful categories, searchable products, and readable details so they can compare options without unnecessary noise.' },
+    { number: '03', title: 'Build with care.', description: 'Keep the experience consistent from discovery to selection, and develop the operational details alongside the product experience.' },
+  ],
   faq: { items: [
-    { question: 'What will I find in the collection?', answer: 'Explore paper goods, writing tools, desk lighting, and thoughtful accents for your workspace. Each product page brings together its price, description, and details.' },
-    { question: 'How is shipping calculated?', answer: 'For US addresses, standard shipping is estimated at $6.95, with free standard shipping from a $100 merchandise subtotal. Express shipping is estimated at $12.95. Choose an option at checkout to see the total.' },
-    { question: 'Can I change my cart?', answer: 'Yes. Open your cart to adjust quantities or remove an item. Your selections stay in this browser so you can continue exploring. You can add up to 10 of each item.' },
-    { question: 'How do I find the right essential?', answer: 'Search the collection by name, filter by paper and writing, desk lighting, or desk accents, and sort by price or new arrivals. Product details help you explore each piece.' },
+    { question: 'What is Engifto?', answer: 'Engifto is a workspace commerce business in development. We are bringing paper goods, desk lighting, and workspace accessories into a focused collection, with a digital experience that makes them easier to explore.' },
+    { question: 'Who are you building for?', answer: 'People who work, study, and create in their own spaces: home-office workers, students, and independent creatives. Our starting point is the everyday personal workspace.' },
+    { question: 'What is your business model?', answer: 'Our intended model is direct-to-consumer online retail of workspace essentials. The website brings together the company story and the collection experience; commercial operations are still being developed.' },
+    { question: 'What can I explore today?', answer: 'You can learn about our purpose and approach, browse the collection, search and compare product details, and keep selections together in a cart. We will publish fulfillment and business contact details as they are confirmed.' },
   ] },
   notFound: { pageTitle: 'Page not found', eyebrow: '404 / A small detour', title: 'This page is\nstill a blank canvas.', description: 'The page you’re looking for doesn’t exist. Let’s find something thoughtful instead.', cta: 'Back to Engifto' },
 };

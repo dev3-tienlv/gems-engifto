@@ -4,6 +4,8 @@ import StoreHeader from '../components/StoreHeader.astro';
 import StoreFooter from '../components/StoreFooter.astro';
 import '../styles/store.css';
 import { site } from '../content/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const commerce = path === '/shop' || path.startsWith('/products/') || ['/cart', '/checkout', '/order-confirmation'].includes(path);
 interface Props { title?: string; description?: string; noindex?: boolean; }
 ---
 <Layout {...Astro.props}>
@@ -12,7 +14,7 @@ interface Props { title?: string; description?: string; noindex?: boolean; }
   <main id="main-content"><slot /></main>
   <StoreFooter />
   <div class="store-toast" role="status" aria-live="polite" hidden><span data-toast-message></span><a href="/cart">View cart <span aria-hidden="true">↗</span></a></div>
-  <noscript><div class="no-js-note">Browsing works without JavaScript. Please enable it to use filters, your cart, and checkout.</div></noscript>
+  {commerce && <noscript><div class="no-js-note">Browsing works without JavaScript. Please enable it to use filters, your cart, and checkout.</div></noscript>}
 </Layout>
 <script>
   import { initStore } from '../scripts/store';
